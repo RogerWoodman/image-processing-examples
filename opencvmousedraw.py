@@ -11,15 +11,14 @@ import numpy
 
 class DrawTest():
 
-    def __init__(self):    
+    def __init__(self, image):    
         """Initialise drawing variables"""
         # Flag for wether the user has clicked and now dragging
         self.drawing = False
         # Points for the rectangle
         self.point1 = (-1, -1)
-        self.point2 = (-1, -1)
         # Initial image
-        self.imageMain = numpy.zeros((512, 512, 3), numpy.uint8)
+        self.imageMain = image
         # Image to draw on
         self.imageDraw = self.imageMain.copy()    
 
@@ -38,8 +37,10 @@ class DrawTest():
 
 if __name__ == '__main__':
     
+    # Load image
+    image = numpy.zeros((512, 512, 3), numpy.uint8)    
     # Create drawing object
-    drawTest = DrawTest()
+    drawTest = DrawTest(image)
     # Create an openCV window
     cv2.namedWindow('Draw test')
     # Attach an even handler to the window
